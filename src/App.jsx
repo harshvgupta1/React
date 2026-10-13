@@ -7,12 +7,16 @@ import RestaurantDetail from './components/RestaurantDetail';
 import CartDrawer from './components/CartDrawer';
 import { OrderSuccessModal, Footer } from './components/Footer';
 import { RESTAURANTS, LOCATIONS } from './data/mockData';
+import { useSwiggyAPI } from './hooks/useSwiggyAPI';
 import './styles/swiggy.css';
 
 export default function App() {
   // Navigation & Location
   const [selectedLocation, setSelectedLocation] = useState(LOCATIONS[0]);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+
+  // Live Swiggy API Hook
+  const { restaurants: liveRestaurants, loading, isLiveAPI } = useSwiggyAPI(selectedLocation);
 
   // Cart state
   const [cartItems, setCartItems] = useState([]);
@@ -94,7 +98,7 @@ export default function App() {
 
   // Filter & sort restaurants
   const filteredRestaurants = useMemo(() => {
-    let result = [...RESTAURANTS];
+    let result = [...liveRestaurants];
 
     // Search query filter (restaurant name, cuisines, or menu dish names)
     if (searchQuery.trim()) {
@@ -161,7 +165,8 @@ export default function App() {
     rating4PlusOnly,
     pureVegOnly,
     offersOnly,
-    sortByPrice
+    sortByPrice,
+    liveRestaurants
   ]);
 
   const totalCartCount = cartItems.reduce((sum, item) => sum + item.qty, 0);
@@ -181,6 +186,7 @@ export default function App() {
           setAppliedPromo(code);
           setIsCartOpen(true);
         }}
+        isLiveAPI={isLiveAPI}
       />
 
       {/* Main Content: Restaurant Details vs Home Grid */}
@@ -237,7 +243,13 @@ export default function App() {
                 </h2>
               </div>
 
-              {filteredRestaurants.length === 0 ? (
+              {loading ? (
+                <div className="restaurants-grid">
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                    <div key={n} className="shimmer-card" />
+                  ))}
+                </div>
+              ) : filteredRestaurants.length === 0 ? (
                 <div style={{ textAlign: 'center', padding: '60px 20px', color: '#686b78' }}>
                   <div style={{ fontSize: '48px', marginBottom: '12px' }}>🍽️</div>
                   <h3 style={{ fontSize: '20px', fontWeight: 800, color: '#282c3f', marginBottom: '8px' }}>

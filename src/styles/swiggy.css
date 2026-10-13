@@ -1397,3 +1397,55 @@ button {
     bottom: 12px;
   }
 }
+
+/* ------------------- SHIMMER LOADING EFFECT ------------------- */
+.shimmer-card {
+  background: #f1f5f9;
+  border-radius: var(--radius-md);
+  height: 260px;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.45) 20%,
+    rgba(255, 255, 255, 0.65) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.api-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 50px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+}
+
+.api-status-badge.live {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #065f46;
+}

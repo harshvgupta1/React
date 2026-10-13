@@ -101,12 +101,12 @@ export const PROMO_BANNERS = [
 ];
 
 export const LOCATIONS = [
-  { id: 'l1', area: 'Sector 62', city: 'Noida', full: 'Sector 62, Noida, Uttar Pradesh 201309' },
-  { id: 'l2', area: 'Sector 18', city: 'Noida', full: 'Atta Market, Sector 18, Noida, Uttar Pradesh' },
-  { id: 'l3', area: 'Indirapuram', city: 'Ghaziabad', full: 'Vaibhav Khand, Indirapuram, Ghaziabad' },
-  { id: 'l4', area: 'Connaught Place', city: 'New Delhi', full: 'Inner Circle, CP, New Delhi' },
-  { id: 'l5', area: 'Cyber City', city: 'Gurugram', full: 'DLF Phase 2, Cyber Hub, Gurugram' },
-  { id: 'l6', area: 'Koramangala', city: 'Bengaluru', full: '5th Block, Koramangala, Bengaluru' }
+  { id: 'l1', area: 'Sector 62', city: 'Noida', full: 'Sector 62, Noida, Uttar Pradesh 201309', lat: 28.6279, lng: 77.3732 },
+  { id: 'l2', area: 'Sector 18', city: 'Noida', full: 'Atta Market, Sector 18, Noida, Uttar Pradesh', lat: 28.5708, lng: 77.3271 },
+  { id: 'l3', area: 'Indirapuram', city: 'Ghaziabad', full: 'Vaibhav Khand, Indirapuram, Ghaziabad', lat: 28.6385, lng: 77.3685 },
+  { id: 'l4', area: 'Connaught Place', city: 'New Delhi', full: 'Inner Circle, CP, New Delhi', lat: 28.6304, lng: 77.2177 },
+  { id: 'l5', area: 'Cyber City', city: 'Gurugram', full: 'DLF Phase 2, Cyber Hub, Gurugram', lat: 28.4950, lng: 77.0895 },
+  { id: 'l6', area: 'Koramangala', city: 'Bengaluru', full: '5th Block, Koramangala, Bengaluru', lat: 12.9352, lng: 77.6245 }
 ];
 
 export const RESTAURANTS = [

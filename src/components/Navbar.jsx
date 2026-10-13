@@ -10,7 +10,8 @@ export default function Navbar({
   searchQuery,
   onSearchChange,
   onResetView,
-  onApplyPromo
+  onApplyPromo,
+  isLiveAPI
 }) {
   const [showLocationDropdown, setShowLocationDropdown] = useState(false);
   const [showUserModal, setShowUserModal] = useState(false);
@@ -41,6 +42,14 @@ export default function Navbar({
               <span className="location-area">{selectedLocation.area}</span>
               <span className="location-city">{selectedLocation.city}</span>
               <ChevronDown size={15} color="#fc8019" />
+            </div>
+
+            {/* Live API Badge */}
+            <div
+              className={`api-status-badge ${isLiveAPI ? 'live' : ''}`}
+              title={isLiveAPI ? "Connected to Live Swiggy API" : "Using Instant Offline Cache"}
+            >
+              <span>{isLiveAPI ? '🟢 Live Swiggy API' : '⚡ Instant Cache'}</span>
             </div>
           </div>
 
